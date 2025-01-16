@@ -1,0 +1,262 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+div {
+    padding: 10px;
+}
+
+input:required:invalid+label {
+    color: red;
+}
+
+::placeholder {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.div_indent {
+    margin-left:10px;
+
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    background-color: #be0924;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 auto; /* Add this line to center the button horizontally */
+    display: block; /* Ensure the button takes up the full width */   
+}
+
+.button_disabled {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 auto; /* Add this line to center the button horizontally */
+    display: block; /* Ensure the button takes up the full width */   
+}
+
+h2 {
+    text-transform: uppercase;
+    font-family: "Quantico", sans-serif;
+    font-weight: 800;
+    font-size: 30pt;
+    margin-top: 0;
+    text-align: center;
+    color: #be0924;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-family: "Quantico", sans-serif;
+    font-weight: 800;
+    font-size: 15pt;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+    color: #2e2e2e;
+}
+
+h4 {
+    text-transform: uppercase;
+    font-family: "Quantico", sans-serif;
+    font-weight: 800;
+    font-size: 12pt;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    text-align: left;
+    color: #2e2e2e;
+}
+
+hr {
+      margin: 0.25em; /* centred margin */
+      height: .5px; /* thickness of the line */
+      background-color: #ffffff; /* colour of the line */
+      border: none; /* no border */
+}
+
+.div_tight{
+    padding:0px;
+}
+
+
+optgroup{
+    padding: 3px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.form-section-header {
+    margin-top: 10px;
+    padding-bottom: .25rem;
+    background-color: #f0f0f0;
+}
+
+.form-subsection-header {
+    margin-top: 10px;
+    padding-bottom: .25rem;
+    background-color: #f0f0f0;
+}
+
+.form-subsection-header-nobg {
+    margin-top: 10px;
+    padding-bottom: .25rem;
+}
+
+.form-div {
+    padding: 15px;
+}
+
+.commercial_div {
+    .form-row
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+
+label_tight {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+
+input[type="date"]{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+select,
+
+textarea{
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    display:block;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    cursor: pointer;
+    padding-left: 20px;
+    position: relative;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+input[type="radio"] + label:before {
+    
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+input[type="radio"]:checked + label:before {
+    background-color: #be0924;
+    border-color: #be0924;
+}
+
+input[type="submit"] {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    background-color: #be0924;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 auto; /* Add this line to center the button horizontally */
+    display: block; /* Ensure the button takes up the full width */
+    
+}
+
+input[type="submit"]:hover {
+    background-color: #be0924;
+    align-content: center;
+
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px !important;
+}
+
+.form-row > div {
+    width: 48%;
+}
+
+.tiny-input {
+    font-size: 10px;
+    padding: 0px !important;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row > div {
+        width: 100%;
+    }
+}
