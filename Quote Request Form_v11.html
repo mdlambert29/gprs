@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Various Google Links -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <!-- Load Google Places API -->
+        <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEf2vA0cP54iFXdON5PIkjEYpQAmHx1Ws&callback=initAutocomplete&libraries=places&v=weekly&loading=async" defer></script>
+
+        <!-- Load Style Sheet -->
+        <link rel="stylesheet" href="styles_v11.css">
+
+        <!-- Load Script File -->
+        <script type="text/javascript" src="webformscripts_v11.js"></script>
+
+        <!-- Page Title -->
+        <title>GPRS - Request A Quote</title>
+    </head>
+
+    <!-- Pre load variables into form -->
+    <body onload="loadForm();">
+
+        <div class="container">
+            
+            <!-- Form Header -->
+            <h2>Request A Quote</h2>
+            
+            <!-- Form call - Update action if a new NS webform is utilized -->
+            <form id="ns_emi_form">
+            <!-- action="https://7003856.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=customscript_gprs_emi_sl&deploy=customdeploy_gprs_emi_sl&compid=7003856&ns-at=AAEJ7tMQ08UDsixBe9DuIKNyOhB4lUZc1lut9Frt6dfLdgw1gZM" method="post" novalidate enctype="multipart/form-data" onsubmit="return false;"> -->
+
+
+                <!-- CONTACT DETAILS FORM SECTION -->
+                <div class="form-section-header" id="contactDiv">
+                    <h3>Contact Details</h3>
+                </div>
+
+                <div class="form-div">
+                    <div class="form-row">
+                      <div>
+                        <label for="firstname">First Name *</label>
+                        <input type="text" id="firstname" name="firstname" pattern="[A-Za-z .]+?" autocomplete="given-name" oninvalid="setCustomValidity('Please do not include numbers or special characters')" data-NSlabel="Requester First Name: " required>
+                      </div>
+                      <div>
+                        <label for="lastname">Last Name *</label>
+                        <input type="text" id="lastname" name="lastname" pattern="[A-Za-z .]+?" autocomplete="family-name" oninvalid="setCustomValidity('Please do not include numbers or special characters')" data-NSlabel="Requester Last Name: " required>
+                      </div>
+                    </div>
+                    <div style="margin-top: -20px; margin-left: 10px">
+                        <input type="checkbox" id="residentialCB" name="residentialCB" data-NSlabel="<b>**Residential Customer**</b>"> I am the homeowner on a residential project</input>
+                    </div>
+                    <div>
+                      <label for="phonenumber">Phone Number *</label>
+                      <input type="tel" id="phonenumber" name="phonenumber" maxlength = "12" autocomplete="tel-national" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" data-NSlabel="Requester Phone Number: " required>
+                      <label-tight style="font-style:italic">Format: 123-456-7890</label-tight>
+                    </div>
+                    <div>
+                      <label for="email">Email *</label>
+                      <input type="email" id="email" name="email" autocomplete="email" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" data-NSlabel="Requester Email: " required>
+                    </div>
+                    <div class="commercial_div">
+                        <label for="companyname">Company Name *</label>
+                        <input type="text" id="companyname" name="companyname" autocomplete="organization" data-NSlabel="Company Name: " required>
+                      </div>
+                    <div class="commercial_div">
+                      <label for="projectRole">What is your role in this project? </label>
+                      <input type="text" id="projectRole" name="projectRole" autocomplete="organization-title" data-NSlabel="Requester Role: ">
+                    </div>
+                    <div>
+                        <label for="quoteDate">Due Date of the Quote *</label>
+                        <input type="date" id="quoteDate" name="quoteDate" data-NSlabel="Quote Due Date: " required>
+                    </div>
+                    <div>
+                        <label for="serviceDate">Project Start Date (if applicable) </label>
+                        <input type="date" id="serviceDate" name="serviceDate" data-NSlabel="Project Start Date: ">
+                    </div>   
+                    <div class="commercial_div">
+                      <label for="industry">Select Industry *</label>
+                      <select id="industry" name="industry" data-NSlabel="Industry Segment: " required>
+                        <option value="" disabled selected hidden>-Select-</option>
+                        <option value="Civil, Road & Bridge">Civil, Road & Bridge</option>
+                        <option value="Design Build & Remodels">Design Build & Remodels</option>
+                        <option value="Education">Education</option>
+                        <option value="Engineering & Surveying">Engineering & Surveying</option>
+                        <option value="Environmental">Environmental</option>
+                        <option value="Facilities">Facilities</option>
+                        <option value="Oil & Gas">Oil & Gas</option>
+                        <option value="Leak Detection">Leak Detection</option>
+                        <option value="One Call Locating">One Call Locating</option>
+                        <option value="Power: Generation / Transmission / Substation / Underground Duct Bank">Power: Generation / Transmission / Substation / Underground Duct Bank</option>
+                        <option value="Renewable Energy">Renewable Energy</option>
+                        <option value="Retail & Restaurant Construction">Retail & Restaurant Construction</option>
+                        <option value="Telecommunications">Telecommunications</option>
+                        <option value="Water & Sewer">Water & Sewer</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                </div>
+
+                <!-- Line Break -->
+                </br>
+
+                <!-- PROJECT LOCATION FORM SECTION -->
+                <div class="form-section-header" id="locationDiv">
+                    <h3>Project Location</h3>
+                </div>
+
+                <div class="form-div">    
+                    <div>
+                        <label for="siteAddress">Job Site Address *</label>
+                        <input type="text" id="siteAddress" name="siteAddress" data-NSlabel="Job Site Address: " required autocomplete="off">
+                    </div>
+
+                    <div>
+                        <label for="siteCity">Job Site City *</label>
+                        <input type="text" id="siteCity" name="siteCity" data-NSlabel="Job Site City: " required>
+                    </div>
+
+                    <div>
+                        <label for="siteState">Job Site State *</label>
+                        <select id="siteState" name="siteState" data-NSlabel="Job Site State: " required>
+                            <option value="" disabled selected hidden>-Select-</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DC">D.C.</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </div>
+                    
+                    <div class="commercial_div">
+                        <label>Does your job span multiple states or locations?</label>
+                        <div class="radio">
+                            <input type="radio" id="multistate_yes" name="multistate_radio" value="Yes" data-NSlabel="Span Multiple Locations: " onclick="javascript:yesnoCheck();"/>
+                            <label for="multistate_yes">Yes</label>
+                
+                            <input type="radio" id="multistate_no" name="multistate_radio" value="No" checked="checked" data-NSlabel="Span Multiple Locations: " onclick="javascript:yesnoCheck();"/>
+                            <label for="multistate_no">No</label>
+                        </div>
+                    </div>
+
+                    <div id="multistate_input" style="display:none">
+                        <label for="multistate_list">List Additional Project Addresses</label>
+                        <textarea id="multistate_list" name="multistate_list" rows="6" data-NSlabel="Additional Locations: "></textarea>
+                    </div>
+
+                    <div class="commercial_div">
+                        <label>Who will be our point of contact while onsite?</label>
+                        <div class="radio">
+                            <input type="radio" id="sitecontact_myself" name="sitecontact_radio" value="Myself" checked="checked" data-NSlabel="Site Contact: " onclick="javascript:yesnoCheck();"/>
+                            <label for="sitecontact_myself">Myself</label>
+                
+                            <input type="radio" id="sitecontact_other" name="sitecontact_radio" value="Other" data-NSlabel="Site Contact: " onclick="javascript:yesnoCheck();"/>
+                            <label for="sitecontact_other">Other Individual</label>
+
+                            <input type="radio" id="sitecontact_none" name="sitecontact_radio" value="None" data-NSlabel="Site Contact: " onclick="javascript:yesnoCheck();"/>
+                            <label for="sitecontact_none">No Site Contact</label>
+                        </div>
+                    </div>
+                    
+                    <div id=sitecontact_info class="div_indent" style="display:none">
+
+                        <label>Site Contact Information</label>
+
+                        <div class=form-row>        
+                            <div>
+                                <label for="sitecontact_firstname">First Name *</label>
+                                <input type="text" id="sitecontact_firstname" name="sitecontact_firstname" data-NSlabel="Site Contact First Name: ">
+                            </div>
+                            <div>
+                                <label for="sitecontact_lastname">Last Name *</label>
+                                <input type="text" id="sitecontact_lastname" name="sitecontact_lastname" data-NSlabel="Site Contact Last Name: ">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="sitecontact_phone">Phone Number *</label>
+                            <input type="tel" id="sitecontact_phone" name="sitecontact_phone" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" data-NSlabel="Site Contact Phone Number: ">
+                            <label-tight style="font-style:italic">Format: 123-456-7890</label-tight>
+                        </div>
+
+                        <div>
+                            <label for="sitecontact_email">Email Address *</label>
+                            <input type="email" id="sitecontact_email" name="sitecontact_email" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" data-NSlabel="Site Contact Email: ">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PROJECT INFORMATION FORM SECTION -->
+                <div class="form-section-header" id="projectDiv">
+                    <h3>Project Information</h3>
+                </div>
+
+                <div class="form-div">
+                    <div class="commercial_div">
+                        <label for="serviceType">What type of service would you like to have completed? *</label>
+                        <select id="serviceType" name="serviceType" size="8" data-NSlabel="Service Requested: " required multiple>
+                            <optgroup label="Locating Services">
+                                <option value="Utility / UST Locating">Utility / UST Locating</option>
+                                <option value="Concrete Scanning">Concrete Scanning</option>
+                            </optgroup>
+                            <optgroup label="Video Pipe Inspection Services">
+                                <option value="VPI - Mainline">Mainline Inspection</option>
+                                <option value="VPI - Lateral">Lateral Inspection</option>
+                            </optgroup>
+                            <optgroup label="Leak Detection Services">
+                                <option value="Leak Locate / Survey">Leak Locate / Survey</option>
+                            </optgroup>
+                            <optgroup label="Reality Capture">
+                                <option value="3D Laser Scanning">3D Laser Scanning</option>
+                                <option value="Drone Imaging">Drone Imaging</option>
+                            </optgroup>
+                            <optgroup label="Mapping & Modeling">
+                                <option value="GIS Mapping">GIS Mapping</option>
+                                <option value="2D / Floorplan">2D / Floorplan</option>
+                                <option value="3D / BIM Modeling">3D / BIM Modeling</option>
+                            </optgroup>
+                            <optgroup label="Software Services">
+                                <option value="Facility Management / SiteMap">Facility Management / SiteMap&reg</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="Other - Described in Project Notes">Other - Described in Project Notes</option>
+                            </optgroup>
+                        </select>
+                        <label-tight style="font-style:italic">To select multiple options, press CTRL</label-tight>
+                    </div>
+
+                    <div class="commercial_div">
+                        <label for="projectNumber">Project Number and/or Job Number</label>
+                        <input type="text" id="projectNumber" name="projectNumber" data-NSlabel="Project / Job Number: ">
+                    </div>
+
+                    <div>
+                        <label>Does the project involve interior or exterior work?</label>
+                        <div class="radio">
+                            <input type="radio" id="choiceInterior" name="choice" value="Interior" data-NSlabel="Interior / Exterior: ">
+                            <label for="choiceInterior">Interior</label>
+                    
+                            <input type="radio" id="choiceExterior" name="choice" value="Exterior" data-NSlabel="Interior / Exterior: ">
+                            <label for="choiceExterior">Exterior</label>
+                    
+                            <input type="radio" id="choiceBoth" name="choice" value="Both" data-NSlabel="Interior / Exterior: ">
+                            <label for="choiceBoth">Both</label>
+                        </div>
+                    </div>
+
+                    <!-- ALL SUBHEADERS -->
+                    <div class="commercial_div">
+                        <!-- SubHeader (Project Based) -- UTILITY -->
+                        <div class="form-subsection-header" hidden id="utilityDiv" style="display:none">
+                            <h4>Utility Locating Information</h4>
+                            <div>
+                                <label>Utility Locating Job Types:</label>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="utilityCBTrench" name="utilityCBTrench" data-NSlabel="&nbsp;&nbsp;- Trenching / Excavating"> Trenching / Excavating</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="utilityCBSoilBoring" name="utilityCBSoilBoring" data-NSlabel="&nbsp;&nbsp;- Soil Boring"> Soil Boring</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="utilityCBBore" name="utilityCBBore" data-NSlabel="&nbsp;&nbsp;- Directional Boring"> Directional Boring</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="utilityCBUST" name="utilityCBUST" data-NSlabel="&nbsp;&nbsp;- Underground Storage Tank (UST)"> Underground Storage Tank (UST)</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="utilityCBVoid" name="utilityCBVoid" data-NSlabel="&nbsp;&nbsp;- Subsurface Voids"> Subsurface Voids</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="utilityCBPre" name="utilityCBPre"  data-NSlabel="&nbsp;&nbsp;- Pre-con / Site Layout"> Pre-con / Site Layout</input>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SubHeader (Project Based) -- CONCRETE -->
+                        <div class="form-subsection-header" hidden id="concreteDiv" style="display:none">
+                            <h4>Concrete Scanning Information</h4>
+                            <div>
+                                <label for="concreteServices">Please select the primary service needed</label>
+                                <select id="concreteServices" name="concreteServices" data-NSlabel="Concrete Services: ">
+                                    <option value="" disabled selected hidden>-Select-</option>
+                                    <option value="Anchor Installation">Anchor Installation</option>
+                                    <option value="Coring / Hole Drilling">Coring / Hole Drilling</option>
+                                    <option value="Saw Cutting">Saw Cutting</option>
+                                    <option value="Pre-con / Design Layout">Pre-con / Design Layout</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="concreteSlabType">Please select the concrete slab type</label>
+                                <select id="concreteSlabType" name="concreteSlabType" data-NSlabel="Concrete Slab Type: ">
+                                    <option value="" disabled selected hidden>-Select-</option>
+                                    <option value="Post-Tensioned">Post-Tensioned</option>
+                                    <option value="Rebar / Mild Steel Reinforced">Rebar / Mild Steel Reinforced</option>
+                                    <option value="Hollow Core">Hollow Core</option>
+                                    <option value="Waffle / T-Slab">Waffle / T-Slab</option>
+                                    <option value="Pan Deck">Pan Deck</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Will the GPRS Project Manager be required to work on an elevated platform, scaffolding, lift, ladder, etc.?</label>
+                                <div class="radio">
+                                    <input type="radio" id="elevatedWorkNo" name="elevatedWork" value="No" checked data-NSlabel="PM working at elevation: ">
+                                    <label for="elevatedWorkNo">No</label>
+                                    <input type="radio" id="elevatedWorkYes" name="elevatedWork" value="Yes" data-NSlabel="PM working at elevation: ">
+                                    <label for="elevatedWorkYes">Yes</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SubHeader (Project Based) -- VPI -->
+                        <div class="form-subsection-header" hidden id="vpiDiv" style="display:none">
+                            <h4>Video Pipe Inspection Services Information</h4>
+                            <div>
+                                <label for="vpiServiceType">Video Inspection Service Type</label>
+                                <select id="vpiServiceType" name="vpiServiceType" data-NSlabel="VPI Service Type: ">
+                                    <option value="" disabled selected hidden>-Select-</option>
+                                    <option value="Sanitary Sewer">Sanitary Sewer</option>
+                                    <option value="Storm Sewer">Storm Sewer</option>
+                                    <option value="Industrial">Industrial</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="vpiLinearFeet">Linear feet needing to be inspected</label>
+                                <input type="text" id="vpiLinearFeet" name="vpiLinearFeet" data-NSlabel="VPI Linear Feet: ">
+                            </div>
+                            <div>
+                                <label for="vpiDiameter">Diameter of Line</label>
+                                <input type="text" id="vpiDiameter" name="vpiDiameter" data-NSlabel="VPI Line Diameter: ">
+                            </div>
+                            <div id="vpiLateralSection" hidden>
+                                <label for="vpiLateral">Please specify quantity of laterals for inspection</label>
+                                <input type="text" id="vpiLateral" name="vpiLateral" data-NSlabel="VPI Lateral Quantity: ">
+                            </div>
+                        </div>
+
+                        <!-- SubHeader (Project Based) -- LEAK -->
+                        <div class="form-subsection-header" hidden id="leakDiv" style="display:none">
+                            <h4>Leak Services Information</h4>
+                            <div>
+                                <label for="leakIndicator">Indications of a Leak</label>
+                                <select id="leakIndicator" name="leakIndicator" data-NSlabel="Leak Indicator: ">
+                                    <option value="" disabled selected hidden>-Select-</option>
+                                    <option value="Water Pooling">Water Pooling</option>
+                                    <option value="High Water Bill">High Water Bill</option>
+                                    <option value="Fire Loop is not holding pressure">Fire Loop is not holding pressure</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="leakLocation">Where is the leak at?</label>
+                                <select id="leakLocation" name="leakLocation" data-NSlabel="Leak Location: ">
+                                    <option value="" disabled selected hidden>-Select-</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Fire Loop">Fire Loop</option>
+                                    <option value="Mobile Home Park">Mobile Home Park</option>
+                                    <option value="Residential">Residential</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- SubHeader (Project Based) -- IMAGING -->
+                        <div class="form-subsection-header" hidden id="imagingDiv" style="display:none">
+                            <h4>Imaging Services Information</h4>
+                            <div>
+                                <label>Have you used laser scanning previously?</label>
+                                <div class="radio">
+                                    <input type="radio" id="choiceLSYes" name="rb_lsprior" value="Yes" data-NSlabel="Previously used laser scanning services: ">
+                                    <label for="choiceLSYes">Yes</label>
+                            
+                                    <input type="radio" id="choiceLSNo" name="rb_lsprior" value="No" data-NSlabel="Previously used laser scanning services: ">
+                                    <label for="choiceLSNo">No</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label>What level of accuracy is needed?</label>
+                                <div class="radio">
+                                    <input type="radio" id="choiceHigh" name="rb_accuracy" value="High Accuracy (2mm - 6 mm)" data-NSlabel="Accuracy Level: ">
+                                    <label for="choiceHigh">High Accuracy (2mm - 6 mm)</label>
+                            
+                                    <input type="radio" id="choiceMedium" name="rb_accuracy" value="Medium Accuracy (7 mm - 1.5 cm)" data-NSlabel="Accuracy Level: ">
+                                    <label for="choiceMedium">Medium Accuracy (7 mm - 1.5 cm)</label>
+                            
+                                    <input type="radio" id="choiceLow" name="rb_accuracy" value="Low Accuracy (> 1.5 cm)" data-NSlabel="Accuracy Level: ">
+                                    <label for="choiceLow">Low Accuracy (> 1.5 cm)</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="ls_scaninfo">What are you scanning?</label>
+                                <textarea rows="3" id="ls_scaninfo" name="ls_scaninfo" data-NSlabel="What are you scanning? " placeholder="What do you want scanned? Is this a building (interior and/or exterior)? What type of building - warehouse, industrial, office space, mechinical room, etc? Is this a topographical scan - land, parking lot, retention pond, quarry, etc?"></textarea>
+                                <label-tight style="font-style:italic">Note: We do not provide metrology-level laser scanning services for parts, tooling, or products.</label-tight>
+                            </div>
+                            <div>
+                                <label for="ls_squarefootage">What is the square footage of the area being scanned?</label>
+                                <input type="text" id="ls_squarefootage" name="ls_squarefootage" data-NSlabel="Scanning Square Footage: ">
+                            </div>
+                            <div>
+                                <label for="ls_scandetail">What level of detail is required?</label>
+                                <textarea rows="3" id="ls_scandetail" name="ls_scandetail" data-NSlabel="Level of Detail: " placeholder="There is a significant difference in the number of scans needed depending on what level of detail is needed. For example, to scan for only the structural domensions (walls, ceilings, floor, etc.) of a room would require less scans than if all electrical conduit needs to be modeled. Do you need all piping detailed or would pipes above a certain diameter suffice?"></textarea>
+                            </div>
+                            <div>
+                                <label>Required Deliverable:</label>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_IMC" name="laserCB_IMC" data-NSlabel="&nbsp;&nbsp;- Intensity Map Cloud"> Intensity Map Cloud</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_CPC" name="laserCB_CPC" data-NSlabel="&nbsp;&nbsp;- Colorized Point Cloud"> Colorized Point Cloud</input>
+                                    <label-tight style="font-style:italic">Note: Requires adequate site lighting</label-tight>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_TVF" name="laserCB_TVF" data-NSlabel="&nbsp;&nbsp;- TruView Files"> TruView Files</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_VMCC" name="laserCB_VMCC" data-NSlabel="&nbsp;&nbsp;- Volume Measurements / Clearance Calculations"> Volume Measurements / Clearance Calculations</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_2DD" name="laserCB_2DD" data-NSlabel="&nbsp;&nbsp;- 2D Drawings (.pdf format)"> 2D Drawings (.pdf format)</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_2DC" name="laserCB_2DC" data-NSlabel="&nbsp;&nbsp;- 2D CAD Drawings (.dwg format)"> 2D CAD Drawings (.dwg format)</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_3DM" name="laserCB_3DM" data-NSlabel="&nbsp;&nbsp;- 3D Mesh"> 3D Mesh</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_3DSM" name="laserCB_3DSM" data-NSlabel="&nbsp;&nbsp;- 3D Model (non-intelligent / solids only model)"> 3D Model (non-intelligent / solids only model)</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_3DIM" name="laserCB_3DIM" data-NSlabel="&nbsp;&nbsp;- 3D Model (intelligent model)"> 3D Model (intelligent model)</input>
+                                </div>
+                                <div class="div_tight">
+                                    <input type="checkbox" id="laserCB_Other" name="laserCB_Other" data-NSlabel="&nbsp;&nbsp;- Other"> Other (describe below)</input>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- SubHeader (Project Based) -- SiteMap -->
+                        <div class="form-subsection-header" hidden id="sitemapDiv" style="display:none">
+                            <h4>Facility Management / SiteMap&reg</h4>
+                            <div>
+                                <label for="sitemapRequest">Reason for my inquiry</label>
+                                <select id="sitemapRequest" name="sitemapRequest" data-NSlabel="SiteMap Inquiry Reason: ">
+                                    <option value="" disabled selected hidden>-Select-</option>
+                                    <option value="Schedule a live demo">Schedule a live demo</option>
+                                    <option value="More information on Premium Subscription">More information on Premium Subscription</option>
+                                    <option value="More information on Pro Subscription">More information on Pro Subscription</option>
+                                    <option value="More information on Project Subscription">More information on Project Subscription</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- General Project Notes -->
+                    <div class="form-subsection-header-nobg">
+                        <h4>Project Notes *</h4>
+                        <textarea id="projectNotes" name="projectNotes" rows="6" placeholder="Please include all relevant information, including project description, approximate size of scan area, any known or anticipated utilities in the general area, and any other information that would support our ability to provide an accurate quote for your project." required data-NSlabel="Project Notes: "></textarea>
+                    </div>
+
+
+                    <!-- Attachment Section -->
+                    <div class="form-section-header">
+                        <h3>File Attachments</h3>
+                    </div>
+                    <div>
+                        <label for="fileattach" style="font-weight: bold;">Upload Attachments (Optional)</label>
+                        <input type="file" id="fileattach" name="fileattach" multiple style="padding: 10px; border: 2px solid #BE1A1E; border-radius: 5px; background-color: #f4f4f4; color: #333; font-size: 16px;" accept=".txt,.xlsx,.xls,.csv,.pdf,.doc,.docx,.ppt,.pptx,.jpg,.png,.kmz,.kml">
+                        <label style="font-style:italic">Note: Max 5MB individual / 15MB cumulative file size limit.</label>
+                        <label id="status"></label>
+
+                    </div>
+
+
+                    <!-- Hidden Fields for Netsuite Concatenation + Marketing Tags + BOT reduction-->
+                    <div>
+                        <!-- Concatenation Field -->
+                        <input type="hidden" name="formInfo" id="formInfo" value="TEST TEXT" />
+                        
+                        <!-- Marketing Tags -->
+                        <input type="hidden" name="utmSource" id="utmSource" />
+                        <input type="hidden" name="utmMedium" id="utmMedium" />
+                        <input type="hidden" name="utmCampaign" id="utmCampaign" />
+                        <input type="hidden" name="utmTerm" id="utmTerm" />
+                        <input type="hidden" name="utmContent" id="utmContent" />
+                        <input type="hidden" name="GCLID" id="GCLID" />
+                        <input type="hidden" name="cookies" id="cookies" />
+                        <input type="hidden" name="hash" id="hash" />
+
+                        <!-- Honeypot Text Field (anti-bot/spam) -->
+                        <input type="checkbox" name="antispam" id="antispam" value="0"  tabindex="-1" autocomplete="false" style="display:none !important"/> 
+                    </div>
+
+                    <!-- Error notice, if Javascript is disabled (Submit button will be deactivated) -->
+                    <noscript>Please enable JavaScript to submit this form</noscript>
+
+                    <!-- Form Submit -->
+                    <div>
+                      <button id="submitbutton" class="button_disabled" type="submit" disabled>Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <!-- Scripts with built-in listeners -->
+        <script type="text/javascript">
+                
+            // Form Submission Script -- Concatenates all inputs and places on hidden field for transmission to Netsuite
+            document.getElementById('ns_emi_form').addEventListener('submit', function(event) {
+
+                // Prevent the default form submission
+                event.preventDefault(); 
+                
+                // Disable submit button
+                document.getElementById('submitbutton').className = "button_disabled";
+                document.getElementById('submitbutton').disabled  = true;   
+                
+                // Gather all input field values and concatenate them
+                var concatenatedData = '<table>';
+
+                // Loop through fieldArr to build concatenated data field
+                fieldArr.forEach(function(fieldData){
+                    if (fieldData['type'] == 'text'){
+                        if (document.getElementById(fieldData['id']).value != '' && findUpTag(document.getElementById(fieldData['id']),'ns_emi_form') == false){
+                            concatenatedData += fieldData['prefix'] + '<td colspan=2 valign="top">' + document.getElementById(fieldData['id']).getAttribute('data-NSlabel') +'</td><td valign="top">' + document.getElementById(fieldData['id']).value + '</td>' + fieldData['suffix'];
+                        }
+                    } else if (fieldData['type'] == 'radio'){
+                        if (document.getElementById(fieldData['id']).checked == true && findUpTag(document.getElementById(fieldData['id']),'ns_emi_form') == false){
+                            concatenatedData += fieldData['prefix'] + '<td colspan=2 valign="top">' + document.getElementById(fieldData['id']).getAttribute('data-NSlabel') + '</td><td valign="top">' + document.getElementById(fieldData['id']).value + '</td>' + fieldData['suffix'];
+                        }
+                    } else if (fieldData['type'] == 'checkbox'){
+                        if (document.getElementById(fieldData['id']).checked == true && findUpTag(document.getElementById(fieldData['id']),'ns_emi_form') == false){
+                            concatenatedData += fieldData['prefix'] + '<td colspan=3 valign="top">' + document.getElementById(fieldData['id']).getAttribute('data-NSlabel') + '</td>' + fieldData['suffix'];
+                        }
+                    } else if (fieldData['type'] == 'select'){
+                        if (document.getElementById(fieldData['id']).value != '' && findUpTag(document.getElementById(fieldData['id']),'ns_emi_form') == false){
+                            // Skim all selected values
+                            var selected = document.querySelectorAll('#' + fieldData['id'] + ' option:checked');
+                            var values = Array.from(selected).map(el => el.value).toString().replaceAll(",",", ");
+                            concatenatedData += fieldData['prefix'] + '<td colspan=2 valign="top">' + document.getElementById(fieldData['id']).getAttribute('data-NSlabel') + '</td><td valign="top">' + values + '</td>' + fieldData['suffix'];
+                        }
+                    } else if (fieldData['type'] == 'label'){
+                        if (document.getElementById(fieldData['id']).value != '' && document.getElementById(fieldData['id']).style.display != 'none'){
+                            // Skim all selected values
+                            concatenatedData += fieldData['prefix'];
+                        }
+                    } else if (fieldData['type'] == 'free-text'){
+                            
+                            // Free text - only pulling data from the prefix field
+                            concatenatedData += fieldData['prefix'];
+                    }       
+                });
+
+                // Close the table
+                concatenatedData += '</table>';
+
+                // Set the concatenated data to the hidden form field
+                document.getElementById('formInfo').value = concatenatedData;
+
+                // Set the unique hashed value for form submit -- Unhide when form is ready...
+                document.getElementById('hash').value = strHash(concatenatedData + FileData).toString().replace("-","");
+                
+                // Submit the form
+                if (document.getElementById("antispam").checked === false){
+
+                    //TRYING NEW METHOD > Payload to Body
+                    const formdata = new FormData(ns_emi_form);
+                    bodyData = Object.fromEntries(formdata.entries());
+                    if(FileData.length>0){
+                        bodyData['files']=FileData;
+                    }
+
+                    fetch('https://7003856.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=customscript_gprs_emi_sl&deploy=customdeploy_gprs_emi_sl&compid=7003856&ns-at=AAEJ7tMQ08UDsixBe9DuIKNyOhB4lUZc1lut9Frt6dfLdgw1gZM',{
+                        method:'POST',
+                        mode: 'no-cors',
+                        headers:{
+                            'Content-Type':'application/json'
+                        },
+                        body:JSON.stringify(bodyData)
+                    }).then(result=>{
+                        //Redirect to Thank You page
+                        window.location.href = RedirectURL();
+                        //window.location.href = "http://www.gp-radar.com/thank-you/gprs";
+                    }).catch(err => {
+                        //Refresh Page on Error
+                        window.location.reload();
+                        
+                    })
+                    
+                } else {
+                    // Honeypot filled out by spam bot - redirect to home page with no form fill + clear browsing history
+                    window.location.replace("https://www.gp-radar.com");
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+            // Function to return the Thank-You page redirect address
+            function RedirectURL(){
+
+                // Validate if Scheduled Date is selected
+                var SchDate = document.getElementById('serviceDate').value
+                var serviceType = document.getElementById('serviceType')
+
+                // Obtain the requested service - loop through each option
+                var multiSelect = 0;
+                var service = '';
+                for (var i=0, iLen=serviceType.options.length; i<iLen; i++){
+                    if (document.getElementById('serviceType').options[i].selected == true){
+
+                        // Increment Multi-select
+                        multiSelect += 1;
+                        service = document.getElementById('serviceType').options[i].value;
+                    }
+                };
+
+                // Set the Thank You page URL -- Schedule Requested
+                var URL = '';
+                if(SchDate !== 'undefined' && SchDate !== '' && SchDate !== null){
+
+                    if(multiSelect > 1){
+                        URL = 'https://www.gp-radar.com/thank-you/service'
+                    } else {
+
+                        // Switch through Service Options
+                        switch(service){
+
+                            case 'Utility / UST Locating':
+                            case 'Concrete Scanning':
+                            case 'Drone Imaging':
+                            case 'GIS Mapping':
+                            case 'Facility Management / SiteMap':
+                            case 'Other - Described in Project Notes':
+                                URL = 'https://www.gp-radar.com/thank-you/service';
+                                break;
+                            
+                            case 'VPI - Mainline':
+                            case 'VPI - Lateral':
+                                URL = 'https://www.gp-radar.com/thank-you/vpi';
+                                break;
+                            
+                            case 'Leak Locate / Survey':
+                                URL = 'https://www.gp-radar.com/thank-you/leak-schedule-service';
+                                break;
+                            
+                            case '3D Laser Scanning':
+                            case '2D / Floorplan':
+                            case '3D / BIM Modeling':
+                                URL = 'https://www.gp-radar.com/thank-you/3d-laser-scan-schedule-a-service';
+                                break;
+                            
+                            default:
+                                URL = 'https://www.gp-radar.com/thank-you/service';
+                        } // End Switch
+                    } // End If
+                
+                // Set the Thank You page URL -- Quote Requested
+                } else {
+                    
+                    if(multiSelect > 1){
+                        URL = 'https://www.gp-radar.com/thank-you/quote'
+                    } else {
+
+                        // Switch through Service Options
+                        switch(service){
+
+                            case 'Utility / UST Locating':
+                            case 'Concrete Scanning':
+                            case 'Drone Imaging':
+                            case 'GIS Mapping':
+                            case 'Facility Management / SiteMap':
+                            case 'Other - Described in Project Notes':
+                                URL = 'https://www.gp-radar.com/thank-you/quote';
+                                break;
+                            
+                            case 'VPI - Mainline':
+                            case 'VPI - Lateral':
+                                URL = 'https://www.gp-radar.com/thank-you/vpi-request';
+                                break;
+                            
+                            case 'Leak Locate / Survey':
+                                URL = 'https://www.gp-radar.com/thank-you/leak-request-a-quote';
+                                break;
+                            
+                            case '3D Laser Scanning':
+                            case '2D / Floorplan':
+                            case '3D / BIM Modeling':
+                                URL = 'https://www.gp-radar.com/thank-you/3d-laser-scan-request-a-quote-short';
+                                break;
+                            
+                            default:
+                                URL = 'https://www.gp-radar.com/thank-you/quote';
+                        } // End Switch
+                    } // End If
+                } // End If
+
+                // Return URL
+                return URL;
+
+            } // End Function
+        </script>
+
+        <script type="text/javascript">
+            // Trigger File Upload
+            document.getElementById('fileattach').addEventListener('change', function(event) {
+                const files = document.getElementById('fileattach').files;
+                var FileSize = true;
+                var FileType = true;
+                var TotFileSize = 0;
+                var AlertMSG = ''
+                var FileAllow = ".txt,.xlsx,.xls,.csv,.pdf,.doc,.docx,.ppt,.pptx,.jpg,.png,.kmz,.kml"
+                if (files){
+
+                    for (ii=0;ii<=files.length-1;ii++){
+                        // Cumulative File Size Counter
+                        TotFileSize += files[ii].size;
+
+                        // Check File Size
+                        if (files[ii].size > 5000000 || TotFileSize > 15000000){
+                            FileSize = false;
+                            AlertMSG = "File size exceeds limits (5MB indiviual / 15MB cumulative)";
+                        }
+                        
+                        // Check File Type
+                        if(!FileAllow.includes(files[ii].name.split(".").at(-1).toLowerCase())){
+                            FileType = false;
+                            AlertMSG += "\nInvalid File Type";
+                        }
+                    }
+
+                    if (FileSize == false || FileType == false){
+                        alert(AlertMSG);
+                        document.getElementById('fileattach').value=''
+                    } else {
+                        loadFile(files);
+                    }
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+            // Phone Number Formatting (Primary Phone)
+            var requester_tel = document.querySelector("#phonenumber");
+            requester_tel.addEventListener("keyup", function(e){
+                
+                if(requester_tel.value.length > 0){
+                    if (event.key != "Backspace" && (requester_tel.value[requester_tel.value.length-1].charCodeAt() < 48 || requester_tel.value[requester_tel.value.length-1].charCodeAt() > 57)){
+                        requester_tel.value = requester_tel.value.substr(0,requester_tel.value.length-1)
+                    }
+
+                    if (event.key != "Backspace" && (requester_tel.value.length === 3 || requester_tel.value.length === 7)){
+                        requester_tel.value += '-';
+                    }
+                }
+            });
+
+            // Phone Number Formatting (Site Contact Phone)
+            var contact_tel = document.querySelector("#sitecontact_phone");
+            contact_tel.addEventListener("keyup", function(e){
+                
+                if(contact_tel.value.length > 0){
+                    if (event.key != "Backspace" && (contact_tel.value[contact_tel.value.length-1].charCodeAt() < 48 || contact_tel.value[contact_tel.value.length-1].charCodeAt() > 57)){
+                        contact_tel.value = contact_tel.value.substr(0,contact_tel.value.length-1)
+                    }
+
+                    if (event.key != "Backspace" && (contact_tel.value.length === 3 || contact_tel.value.length === 7)){
+                        contact_tel.value += '-';
+                    }
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+            // Hide all fields in the event of a residential client
+            var residential = document.getElementById("residentialCB");
+
+            residential.addEventListener("change", function(){
+                var commercial_div = document.getElementsByClassName("commercial_div");
+
+                if (residential.checked == true){
+                    // Hide + Clear all fields related to commercial construction
+                    for (var ii of commercial_div){
+                        ii.style.display = "none";
+
+                        // Clear all Text Input data
+                        var inputElements = ii.getElementsByTagName("input");
+                        for (var jj of inputElements){
+                            jj.value = "";
+                        }
+
+                        // Clear all checkbox data
+                        var cbElements = ii.getElementsByTagName("checkbox");
+                        for (var kk of cbElements){
+                            kk.checked = false;
+                        }
+                    };
+
+                    // Turn off validation for required fields
+                    document.getElementById("companyname").required=false;
+                    document.getElementById("industry").required=false;
+                    document.getElementById("industry").required=false;
+                    document.getElementById("serviceType").required=false;
+
+                } else {
+                    for (ii of commercial_div){
+                        ii.style.display = "block";
+                    };
+
+                    // Turn on validation for required fields
+                    document.getElementById("companyname").required=true;
+                    document.getElementById("industry").required=true;
+                    document.getElementById("industry").required=true;
+                    document.getElementById("serviceType").required=true;
+                };
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            // Service Type selection --> Hide/Show Additional Fields
+            var serviceType = document.getElementById("serviceType");
+
+            serviceType.addEventListener("change", function() {
+                var hiddenVars = [];
+                for (var i=0, iLen=serviceType.options.length; i<iLen; i++){
+                    
+                    // Show Selected Service Line Inputs
+                    if (serviceType.options[i].selected != ""){ 
+                        switch (serviceType.options[i].value){
+                            case "Utility / UST Locating":
+                                document.getElementById("utilityDiv").style.display="block";
+                                break;
+                            
+                            case "Concrete Scanning":
+                                document.getElementById("concreteDiv").style.display="block";
+                                break;
+
+                            case "VPI - Lateral":
+                                document.getElementById("vpiLateralSection").style.display="block";
+                            case "VPI - Mainline":
+                                document.getElementById("vpiDiv").style.display="block";
+                                break;
+                                
+                            case "Leak Locate / Survey":
+                                document.getElementById("leakDiv").style.display="block";
+                                break;    
+
+                            case "3D Laser Scanning":
+                                document.getElementById("imagingDiv").style.display="block";
+                                break; 
+                            
+                            case "Facility Management / SiteMap":
+                                document.getElementById("sitemapDiv").style.display="block";
+                                break;
+                        };
+                    };
+
+                    // Build Array for Hidden Service Types
+                    if (serviceType.options[i].selected == ""){ 
+                        hiddenVars.push(serviceType.options[i].value);
+                    };
+                };
+
+                if (hiddenVars.includes("Utility / UST Locating")){
+                    document.getElementById("utilityDiv").style.display="none";
+                }
+
+                if (hiddenVars.includes("Concrete Scanning")){
+                    document.getElementById("concreteDiv").style.display="none";
+                };
+
+                if (hiddenVars.includes("VPI - Lateral")){
+                    document.getElementById("vpiLateralSection").style.display="none";
+                };
+
+                if (hiddenVars.includes("VPI - Mainline") && hiddenVars.includes("VPI - Lateral")){
+                    document.getElementById("vpiDiv").style.display="none";
+                };
+
+                if (hiddenVars.includes("Leak Locate / Survey")){
+                    document.getElementById("leakDiv").style.display="none";
+                };
+
+                if (hiddenVars.includes("3D Laser Scanning")){
+                    document.getElementById("imagingDiv").style.display="none";
+                };
+
+                if (hiddenVars.includes("Facility Management / SiteMap")){
+                    document.getElementById("sitemapDiv").style.display="none";
+                };
+            });
+
+
+        </script>
+        <!--
+        <script type="text/javascript">
+            // DELETE LATER; USED FOR EXTRACTING FIELD IDs
+            window.addEventListener('load', function () {
+            var inputs = [];
+            document.querySelectorAll('input').forEach( input => {
+                //console.log(this.constructor.name); // Window
+                if(input.id){
+                    inputs.push(input.id + " - Input (Text, RB, CB)");
+                }
+            });
+            document.querySelectorAll('select').forEach( select => {
+                //console.log(this.constructor.name); // Window
+                if (select.id){
+                    inputs.push(select.id + " - List");
+                }
+            });
+            document.querySelectorAll('textarea').forEach( textarea => {
+                //console.log(this.constructor.name); // Window
+                if (textarea.id){
+                    inputs.push(textarea.id + " - Text Area");
+                }
+            });
+            
+            console.log(inputs);
+            })
+        </script>
+    -->
+    </body>
+</html>
